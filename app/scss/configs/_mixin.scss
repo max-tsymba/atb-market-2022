@@ -1,7 +1,0 @@
-/*========================================MIXINS========================================*/
-@mixin create-button($fontSize, $width, $top-bottom, $left-right: 5px) {
-    font-size: #{$fontSize}px;
-    width: #{$width}px;
-    padding: #{$top-bottom}px #{$left-right};
-}
-/*======================================================================================*/
