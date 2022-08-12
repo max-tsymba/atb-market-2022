@@ -1,4 +1,9 @@
+# maps
 .sass-cache/
 *.css.map
 *.sass.map
 *.scss.map
+
+# packages
+build/
+node_modules/
