@@ -1,290 +1,289 @@
-.top{
-    min-height: auto;
+.top {
+  min-height: auto;
+  position: relative;
+
+  @media screen and (max-width: 768px) {
+    min-height: 100vh;
+  }
+
+  @media screen and (max-width: 1024px) and (min-height: 1200px) {
+    min-height: 100vh;
+  }
+
+  &__inner {
+    padding-top: 270px;
     position: relative;
+    padding-bottom: 100px;
+    max-width: 560px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
     @media screen and (max-width: 768px) {
-        min-height: 100vh;
+      padding-bottom: 25px;
+      padding-top: 200px;
+    }
+
+    @media screen and (max-width: 768px) and (min-height: 1000px) {
+      padding-top: 350px;
     }
 
     @media screen and (max-width: 1024px) and (min-height: 1200px) {
-        min-height: 100vh;
-    }
-
-    &__inner{
-        padding-top: 270px;
-        position: relative;
-        padding-bottom: 100px;
-        max-width: 560px;
-        margin: 0 auto;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-
-        @media screen and (max-width: 768px) {
-            padding-bottom: 25px;
-            padding-top: 200px;
-        }
-
-            @media screen and (max-width: 768px) and (min-height: 1000px) {
-                padding-top: 350px;
-            }
-
-        @media screen and (max-width: 1024px) and (min-height: 1200px) {
-            padding-top: 420px;
-        }
-
-        @media screen and (max-width: 525px) {
-            padding-top: 150px;
-        }
-
-        @media screen and (max-width: 525px) and (min-height: 800px) {
-            padding-top: 300px;
-        }
-    }
-
-    &__title{
-        font-family: 'Montserrat';
-        font-weight: 800;
-        color: $text;
-        font-size: 72px;
-        line-height: 1.2;
-        text-shadow: 0px 4px 2px rgba(0, 0, 0, 0.25);
-        margin-bottom: 30px;
-
-        @media screen and (max-width: 1300px) {
-            font-size: 60px;
-        }
-
-        @media screen and (max-width: 768px) {
-            font-size: 48px;
-            text-align: center;
-        }
-
-        @media screen and (max-width: 524px) {
-            font-size: 36px;
-            max-width: 300px;
-        }
-    }
-
-    &__subtitle{
-        font-family: 'Montserrat';
-        font-weight: 500;
-        font-size: 42px;
-        line-height: 1.2;
-        color: #4900A9;
-        margin-bottom: 80px;
-
-        &-img{
-            display: inline-block;
-            margin-bottom: -10px;
-        }
-
-        @media screen and (max-width: 1300px) {
-            font-size: 36px;
-        }
-
-        @media screen and (max-width: 1024px) {
-            font-size: 30px;
-            img{
-                max-width: 80px;
-            }
-        }
-
-        @media screen and (max-width: 768px) {
-            font-size: 24px;
-            text-align: center;
-            max-width: 400px;
-        }
-
-        @media screen and (max-width: 524px) {
-           font-size: 18px;
-           max-width: 300px;
-
-           img{
-            max-width: 60px;
-            }
-        }
-
-        .number{
-            font-weight: 800;
-        }
-    }
-
-    &__btn{
-        margin-bottom: 100px;
-    }
-
-    &__arrow{
-        color: $text;
-        display: inline-block;
-        transform: translateY(0);
-        animation: MoveUpDown 1s ease-in-out infinite;
-
-        // @media screen and (max-width: 768px) {
-        //     display: none;
-        // }
-
-        &:hover{
-            transform: translateY(10px);
-        }
-    }
-}
-
-.menu-btn{
-    width: 300px;
-    font-size: 18px;
-
-    @media screen and (max-width: 524px) {
-        max-width: 100%;
-        font-size: 16px;                
-     }
-}
-
-.header__menu{
-    @media screen and (max-width: 524px) {
-        max-width: 95%;
-     }
-}
-
-
-
-.sphere-top {
-    position: absolute;
-    top: 0;
-    left: 0;    
-
-    @media screen and (max-width: 768px) and (min-height: 1000px) {
-        max-width: 500px;
-    }
-}
-
-.left-wheel{
-    position: absolute;
-    left: 0;
-    top: 50%;
-    transform: translateY(-50%);
-
-    @media screen and (max-width: 1300px) {
-        left: -100px;
-    }
-
-    @media screen and (max-width: 1024px) {
-        left: -160px;
-        max-width: 400px;
-        top: 70%;
-    }
-
-    @media screen and (max-width: 768px) {
-        max-width: 300px;
-        left: -100px;
-        top: 80%;
+      padding-top: 420px;
     }
 
     @media screen and (max-width: 525px) {
-        max-width: 250px;
-        top: 85%;
+      padding-top: 150px;
     }
-}
 
-.line-gold{
-    position: absolute;
-    right: 76px;
-    top: 230px;
-    animation: MoveUpDown 1s ease-in-out infinite;
-}
+    @media screen and (max-width: 525px) and (min-height: 800px) {
+      padding-top: 300px;
+    }
+  }
 
-.check{
-    position: absolute;
-    right: 150px;
-    max-width: 280px;
-    top: 250px;
-    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  &__title {
+    font-family: 'Montserrat';
+    font-weight: 800;
+    color: $text;
+    font-size: 72px;
+    line-height: 1.2;
+    text-shadow: 0px 4px 2px rgba(0, 0, 0, 0.25);
+    margin-bottom: 30px;
 
     @media screen and (max-width: 1300px) {
-        right: 0px;
-    }
-
-    @media screen and (max-width: 1024px) {
-        right: -120px;
-        top: 200px;
+      font-size: 60px;
     }
 
     @media screen and (max-width: 768px) {
-       max-width: 200px;
-    }
-
-    @media screen and (max-width: 525px) {
-        top: 120px;
-        right: -90px;
-        max-width: 150px;
-    }
-}
-
-.purple-element{
-    position: absolute;
-    right: 150px;
-    top: 75%;
-    animation: MoveUpDown 1.5s ease-in-out infinite;
-
-    @media screen and (max-width: 768px) {
-        top: 80%;
-        right: 0;
-        max-width: 100px;
+      font-size: 48px;
+      text-align: center;
     }
 
     @media screen and (max-width: 524px) {
-        display: none;
+      font-size: 36px;
+      max-width: 300px;
     }
-}
+  }
 
-.circle-white{
-    position: absolute;
-    left: 370px;
-    top: 83%;
-    animation: MoveUpDown 1.3s ease-in-out infinite;
+  &__subtitle {
+    font-family: 'Montserrat';
+    font-weight: 500;
+    font-size: 42px;
+    line-height: 1.2;
+    color: #4900a9;
+    margin-bottom: 80px;
+
+    &-img {
+      display: inline-block;
+      margin-bottom: -10px;
+    }
+
+    @media screen and (max-width: 1300px) {
+      font-size: 36px;
+    }
 
     @media screen and (max-width: 1024px) {
-        left: 160px;
-    }
-
-    @media screen and (max-width: 768px) {
-        top: 20%;
+      font-size: 30px;
+      img {
         max-width: 80px;
-        left: 100px;
+      }
+    }
+
+    @media screen and (max-width: 768px) {
+      font-size: 24px;
+      text-align: center;
+      max-width: 400px;
     }
 
     @media screen and (max-width: 524px) {
+      font-size: 18px;
+      max-width: 300px;
 
-        top: 10%;
-        max-width: 40px;
+      img {
+        max-width: 60px;
+      }
     }
-}
 
-.pseudo-white{
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: -1;
-    width: 1px;
-    height: 1px;
-    box-shadow: 0px 0px 250px 300px rgba(255, 255, 255, 0.5);
-}
-
-.pseudo-blue{
-    right: -5%;
-    top: -5%;
-    position: absolute;
-    z-index: -1;
-    width: 1px;
-    height: 1px;
-    box-shadow: 0px 0px 250px 200px #1F0BF7;
-}
-
-@keyframes MoveUpDown {
-    0%, 100% {
-      transform: translateY(0);
+    .number {
+      font-weight: 800;
     }
-    50% {
+  }
+
+  &__btn {
+    margin-bottom: 100px;
+  }
+
+  &__arrow {
+    color: $text;
+    display: inline-block;
+    transform: translateY(0);
+    animation: MoveUpDown 1s ease-in-out infinite;
+
+    // @media screen and (max-width: 768px) {
+    //     display: none;
+    // }
+
+    &:hover {
       transform: translateY(10px);
     }
   }
+}
+
+.menu-btn {
+  width: 300px;
+  font-size: 18px;
+
+  @media screen and (max-width: 524px) {
+    max-width: 100%;
+    font-size: 16px;
+  }
+}
+
+.header__menu {
+  @media screen and (max-width: 524px) {
+    max-width: 95%;
+  }
+}
+
+.sphere-top {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  @media screen and (max-width: 768px) and (min-height: 1000px) {
+    max-width: 500px;
+  }
+}
+
+.left-wheel {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+
+  @media screen and (max-width: 1300px) {
+    left: -100px;
+  }
+
+  @media screen and (max-width: 1024px) {
+    left: -160px;
+    max-width: 400px;
+    top: 70%;
+  }
+
+  @media screen and (max-width: 768px) {
+    max-width: 300px;
+    left: -100px;
+    top: 80%;
+  }
+
+  @media screen and (max-width: 525px) {
+    max-width: 250px;
+    top: 85%;
+  }
+}
+
+.line-gold {
+  position: absolute;
+  right: 76px;
+  top: 230px;
+  animation: MoveUpDown 1s ease-in-out infinite;
+}
+
+.check {
+  position: absolute;
+  right: 150px;
+  max-width: 350px;
+  top: 250px;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+
+  @media screen and (max-width: 1300px) {
+    right: 0px;
+    max-width: 250px;
+  }
+
+  @media screen and (max-width: 1024px) {
+    right: -120px;
+    top: 200px;
+  }
+
+  @media screen and (max-width: 768px) {
+    max-width: 200px;
+  }
+
+  @media screen and (max-width: 525px) {
+    top: 120px;
+    right: -90px;
+    max-width: 150px;
+  }
+}
+
+.purple-element {
+  position: absolute;
+  right: 150px;
+  top: 75%;
+  animation: MoveUpDown 1.5s ease-in-out infinite;
+
+  @media screen and (max-width: 768px) {
+    top: 80%;
+    right: 0;
+    max-width: 100px;
+  }
+
+  @media screen and (max-width: 524px) {
+    display: none;
+  }
+}
+
+.circle-white {
+  position: absolute;
+  left: 370px;
+  top: 83%;
+  animation: MoveUpDown 1.3s ease-in-out infinite;
+
+  @media screen and (max-width: 1024px) {
+    left: 160px;
+  }
+
+  @media screen and (max-width: 768px) {
+    top: 20%;
+    max-width: 80px;
+    left: 100px;
+  }
+
+  @media screen and (max-width: 524px) {
+    top: 10%;
+    max-width: 40px;
+  }
+}
+
+.pseudo-white {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: -1;
+  width: 1px;
+  height: 1px;
+  box-shadow: 0px 0px 250px 300px rgba(255, 255, 255, 0.5);
+}
+
+.pseudo-blue {
+  right: -5%;
+  top: -5%;
+  position: absolute;
+  z-index: -1;
+  width: 1px;
+  height: 1px;
+  box-shadow: 0px 0px 250px 200px #1f0bf7;
+}
+
+@keyframes MoveUpDown {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(10px);
+  }
+}
