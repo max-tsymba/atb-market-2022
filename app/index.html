@@ -599,12 +599,14 @@
     <!-- Modal for gift -->
     <div class="overlay__gift">
       <div class="gift">
-        <div class="gift__coup">Купон</div>
+        <div class="gift__coup" style="display: none">Купон</div>
         <div class="gift__message">
-          Вітаємо! Ви отримали купон <span class="na__sumu">на суму</span>
-          <span class="gift__suma">0</span>
-          <span class="na__sumu">грн.</span> від
-          <span class="gift__partner">Partner</span>
+          Вітаємо! Ви виграли подарунок від партнера
+          <span class="gift__partner">Partner</span>. <br />
+          Він прийде вам на пошту протягом неділі.
+          <span class="na__sumu" style="display: none">на суму</span>
+          <span class="gift__suma" style="display: none">0</span>
+          <span class="na__sumu" style="display: none">грн.</span>
         </div>
         <button class="gift__close" type="button">
           <svg
@@ -654,16 +656,16 @@
         textFillStyle: '#EFEFEC',
         drawMode: 'segmentImage',
         segments: [
-          { image: './img/cold-wheel.png', text: '' },
-          { image: './img/iso-wheel.png', text: '' },
-          { image: './img/atb-wheel.png', text: '' },
-          { image: './img/fox-wheel.png', text: '' },
-          { image: './img/mida-wheel.png', text: '' },
-          { image: './img/cold-wheel.png', text: '' },
-          { image: './img/iso-wheel.png', text: '' },
-          { image: './img/atb-wheel.png', text: '' },
-          { image: './img/fox-wheel.png', text: '' },
-          { image: './img/mida-wheel.png', text: '' },
+          { image: './img/wheel/atb.png', text: '' },
+          { image: './img/wheel/fox.png', text: '' },
+          { image: './img/wheel/dnipro.png', text: '' },
+          { image: './img/wheel/cold.png', text: '' },
+          { image: './img/wheel/lux.png', text: '' },
+          { image: './img/wheel/mida.png', text: '' },
+          { image: './img/wheel/eng.png', text: '' },
+          { image: './img/wheel/atb.png', text: '' },
+          { image: './img/wheel/fox.png', text: '' },
+          { image: './img/wheel/cold.png', text: '' },
         ],
         animation: {
           type: 'spinToStop',
@@ -678,25 +680,33 @@
       function calculatePrize() {
         let stopNumber = 0;
         let parObject = {
-          gold_ua: {
-            name: 'Голд UA',
+          АТБ: {
+            name: 'АТБ',
             index: 1,
           },
-          foxtrot: {
+          Фокстрот: {
             name: 'Фокстрот',
             index: 4,
           },
-          zakaz_atb: {
-            name: 'АТБ',
+          'Dnipro M': {
+            name: 'Dnipro M',
             index: 3,
           },
-          quest_izolyaciya: {
-            name: 'Квест Кімната "Ізоляція"',
-            index: 2,
+          'Gold ua': {
+            name: 'Gold ua',
+            index: 4,
           },
-          mida: {
-            name: 'Mida Shop',
+          Люксоптика: {
+            name: 'Люксоптика',
             index: 5,
+          },
+          'Mida Shop': {
+            name: 'Mida Shop',
+            index: 6,
+          },
+          'English Home': {
+            name: 'English Home',
+            index: 7,
           },
         };
 
@@ -710,26 +720,10 @@
         for (let key in parObject) {
           // responseText.partner_name
           if (isDone) {
-            if (key === responseText.partner_name) {
-              if (responseText.sum === 0) {
-                stopNumber = parObject[key].index;
-                coupon = responseText.code;
-                nameRar = parObject[key].name;
-                sum = 'на безкоштовну доставку';
-                na_s.forEach((item) => (item.style.display = 'none'));
-                isDone = false;
-              } else {
-                stopNumber = parObject[key].index;
-                coupon = responseText.code;
-                nameRar = parObject[key].name;
-                sum = responseText.sum;
-                isDone = false;
-              }
-            } else {
-              stopNumber = 2;
-              sum = 0;
-              coupon = 'oofofofo';
-              nameRar = 'Test';
+            if (key === responseText.name) {
+              stopNumber = parObject[key].index;
+              nameRar = parObject[key].name;
+              isDone = false;
             }
           }
         }
