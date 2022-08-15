@@ -6,4 +6,5 @@
 
 # packages
 build/
+dist/
 node_modules/
