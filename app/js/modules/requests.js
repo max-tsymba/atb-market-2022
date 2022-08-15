@@ -1,6 +1,7 @@
 const get_headers = () => {
   return new Headers({
     Accept: 'application/json',
+    'Content-Type': 'application/json',
   });
 };
 
