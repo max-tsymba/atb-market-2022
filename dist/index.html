@@ -401,7 +401,11 @@
     <!-- Modal Form -->
     <div id="overlay-reg" class="overlay">
       <div id="modal-reg" class="modal">
-        <form class="modal-form reg-form" action="/api/check" method="post">
+        <form
+          class="modal-form reg-form"
+          action="/api/v1/users/codes"
+          method="post"
+        >
           <button
             class="close-btn close-reg-modal"
             type="button"
@@ -441,7 +445,7 @@
             <input
               type="email"
               required=""
-              name="mail"
+              name="email"
               placeholder="Вкажіть Email*"
             />
           </label>
