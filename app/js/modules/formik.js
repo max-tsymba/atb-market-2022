@@ -38,19 +38,16 @@ const formik = (selector, submitButton) => {
 
     function request(e) {
       e.preventDefault();
-      const formData = new FormData();
       const data = convertInputsToData(inputsByForm);
 
       helpertext.textContent = '';
 
-      for (let key in data) {
-        formData.append(key, data[key]);
-      }
+      const jsondata = JSON.stringify(data);
 
       submitBtnSelector.disabled = true;
       loader.classList.add('active');
 
-      post_request(endpoint, formData)
+      post_request(endpoint, jsondata)
         .then((response) => {
           responseText = response.name;
           wheel.classList.add('active');
