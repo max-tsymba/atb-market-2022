@@ -19,19 +19,24 @@ const wheelNone = () => {
   }
 };
 
-const clearInputs = (array) => {
+const clearInputs = (array, labelByForm) => {
   for (let index = 0; index < array.length; index++) {
     const input = array[index];
     input.classList.remove('error');
+    labelByForm.textContent = '';
   }
 };
 
-const addError = (array, response) => {
+const addError = (array, response, labelForm) => {
   for (let index = 0; index < array.length; index++) {
     const input = array[index];
+    const label = labelForm[index];
+
+    const key = Object.keys(response.errors)[0];
 
     if (input.name === Object.keys(response.errors)[0]) {
       input.classList.add('error');
+      labelForm[index] = response.errors[key];
     }
   }
 };
@@ -51,6 +56,7 @@ const formik = (selector, submitButton) => {
     const endpoint = formSelector.action,
       inputsByForm = formSelector.getElementsByTagName('input'),
       loader = formSelector.getElementsByClassName('loader')[0],
+      labelByForm = formSelector.getElementsByClassName('label-error'),
       helpertext = formSelector.getElementsByClassName('result-text')[0];
 
     formSelector.addEventListener('submit', request);
@@ -61,7 +67,7 @@ const formik = (selector, submitButton) => {
       submitBtnSelector.disabled = true;
       loader.classList.add('active');
 
-      clearInputs(inputsByForm);
+      clearInputs(inputsByForm, labelByForm);
       helpertext.textContent = '';
 
       grecaptcha.ready(function () {
@@ -92,7 +98,7 @@ const formik = (selector, submitButton) => {
                 } else {
                   responseObj.json.then((text) => {
                     helpertext.textContent = text.message;
-                    addError(inputsByForm, text);
+                    addError(inputsByForm, text, labelByForm);
                   });
                 }
               })
