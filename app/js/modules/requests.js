@@ -16,5 +16,6 @@ const get_formik = (method, body) => {
 
 export async function post_request(endpoint, data) {
   const response = await fetch(endpoint, get_formik('POST', data));
+
   return response;
 }
