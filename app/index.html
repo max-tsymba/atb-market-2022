@@ -28,11 +28,11 @@
         <div class="overlay-menu">
           <div class="header__menu">
             <ul class="menu">
-              <!-- <li class="menu__item">
+              <li class="menu__item">
                 <a class="menu__item-link auth-open" href="account.html">
                   Особистий кабінет
                 </a>
-              </li> -->
+              </li>
 
               <li class="menu__item">
                 <a class="menu__item-link" href="index.html#partners">
@@ -51,7 +51,10 @@
               </li>
 
               <li class="menu__item">
-                <button class="blue-btn menu-btn purple-btn" type="button">
+                <button
+                  class="blue-btn menu-btn purple-btn reg-btn"
+                  type="button"
+                >
                   Зареєструвати код
                 </button>
               </li>
@@ -404,7 +407,7 @@
       <div id="modal-reg" class="modal">
         <form
           class="modal-form reg-form"
-          action="http://koleso.atbmarket.com/api/v1/users/codes"
+          action="/api/v1/users/codes"
           method="post"
         >
           <button
@@ -504,7 +507,7 @@
     <!-- Modal Form -->
     <div id="overlay-auth" class="overlay">
       <div id="modal-auth" class="modal">
-        <form class="modal-form auth-form" action="/api/login" method="post">
+        <form class="modal-form auth-form" action="/api/v1/login" method="post">
           <button
             class="close-btn close-auth-modal"
             type="button"

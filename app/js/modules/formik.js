@@ -81,9 +81,13 @@ const formik = (selector, submitButton) => {
               .then((responseObj) => {
                 if (responseObj.status) {
                   responseObj.json.then((text) => {
-                    window.responseText = text.partner;
-                    wheel.classList.add('active');
-                    overlay_reg.classList.remove('active');
+                    if (text.partner) {
+                      window.responseText = text.partner;
+                      wheel.classList.add('active');
+                      overlay_reg.classList.remove('active');
+                    } else {
+                      window.location.href = '/account.html';
+                    }
                   });
                 } else {
                   responseObj.json.then((text) => {
