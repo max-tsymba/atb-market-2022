@@ -66,7 +66,7 @@ const formik = (selector, submitButton) => {
 
       grecaptcha.ready(function () {
         grecaptcha
-          .execute('6Ld13OcaAAAAAG8rKkfe0ykgiS7fp4Z1wjE8uYL1', {
+          .execute('6LeEx4AhAAAAANORK89f2fgR4d4a_2dwq9CM3wEG', {
             action: 'submit',
           })
           .then(function (token) {
