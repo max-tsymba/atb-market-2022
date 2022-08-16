@@ -36,7 +36,7 @@ const addError = (array, response, labelForm) => {
 
     if (input.name === Object.keys(response.errors)[0]) {
       input.classList.add('error');
-      labelForm[index] = response.errors[key];
+      label[index] = response.errors[key];
     }
   }
 };
