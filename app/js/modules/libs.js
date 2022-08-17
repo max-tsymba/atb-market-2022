@@ -53,9 +53,6 @@ const modalOpener = () => {
     const inputsCollection = document.getElementsByTagName('input');
 
     const inputs = [].slice.call(inputsCollection);
-
-    console.log(inputs);
-
     let removeScroll = calcScroll();
     let isWrapper = false;
 

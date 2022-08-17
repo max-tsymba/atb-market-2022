@@ -28,11 +28,11 @@
         <div class="overlay-menu">
           <div class="header__menu">
             <ul class="menu">
-              <!-- <li class="menu__item">
+              <li class="menu__item">
                 <a class="menu__item-link auth-open" href="account.html">
                   Особистий кабінет
                 </a>
-              </li> -->
+              </li>
 
               <li class="menu__item">
                 <a class="menu__item-link" href="index.html#partners">
@@ -107,10 +107,12 @@
             <div class="top__inner">
               <div class="pseudo-white"></div>
 
-              <h1 class="top__title">Гарантованi подарунки!</h1>
+              <h1 class="top__title">
+                Гарантованi подарунки <a href="#footer">*</a>
+              </h1>
 
               <p class="top__subtitle">
-                за реєстрацію акційного коду з чеку АТБ
+                за реєстрацію акційного коду з чеку
                 <span class="top__subtitle-img">
                   <img src="./img/global/text-logo.png" alt="logo" />
                 </span>
@@ -364,22 +366,21 @@
       <footer class="footer">
         <div class="container">
           <div class="container-md">
-            <div class="footer__inner">
+            <div class="footer__inner" id="footer">
               <p class="footer__info">
-                Купуй в магазині «АТБ-МАРКЕТ» на суму від 300 грн з Товаром
-                Партнера в одному чеку (для отримання акційного коду, у чеку
-                повинен бути мінімум один із Товарів Партнерів), реєструй код з
-                чеку на сайті
+                * Купуй в магазині «АТБ-МАРКЕТ» на суму від 300 (триста) гривень
+                включно із Товаром Партнерів (у кількості від 1 (однієї)
+                одиниці) одним чеком, реєструй код з чеку на сайті
                 <a class="footer__link" href="https://koleso.atbmarket.com">
                   koleso.atbmarket.com
                 </a>
-                - вигравай миттєві сертифікати (у рекламних матеріалах
+                та вигравай миттєві сертифікати (у рекламних матеріалах
                 «подарунки») від партнерів акції: ТОВ «ФТД-РІТЕЙЛ», ТОВ «ТГ ГОЛД
-                ЮЕЙ», ТОВ "Мережа магазинів Дніпро-М", ТОВ «ІНТЕРОКО», ФОП
-                Котяжко А.С, ТОВ "ЕХМ УКРАЇНА" та приймай участь у щотижневому
+                ЮЕЙ», ТОВ «Мережа магазинів Дніпро-М», ТОВ «ІНТЕРОКО», ФОП
+                Котяжко А.С., ТОВ «ЕХМ УКРАЇНА» та приймай участь у щотижневому
                 розіграші подарунків від головних партнерів акції: ТОВ «Нестле
                 Україна», ПРАТ «МОНДЕЛІС УКРАЇНА», ТОВ «КОНДИТЕРСЬКА ФАБРИКА
-                «ЯРИЧ», ПрАТ «ЛЬВІВСЬКИЙ ХОЛОДОКОМБІНАТ». <br />Товари Партнерів
+                «ЯРИЧ», ПрАТ «ЛЬВІВСЬКИЙ ХОЛОДОКОМБІНАТ». Товари Партнерів
                 зазначені в офіційних правилах акції на сайті
                 <a class="footer__link" href="https://koleso.atbmarket.com">
                   koleso.atbmarket.com
@@ -391,9 +392,9 @@
                 <a class="footer__link" href="https://koleso.atbmarket.com">
                   koleso.atbmarket.com
                 </a>
-                або за телефоном «гарячої лінії» 044-392-92-00 (графік роботи: з
-                понеділка по п'ятницю з 12:00 до 20:00). Дзвінки для абонентів
-                усіх національних GSM операторів - відповідно до тарифних планів
+                або за телефоном «гарячої лінії» 044 392 92 00 (графік роботи: з
+                понеділка по п’ятницю з 12:00 до 20:00). Дзвінки для абонентів
+                усіх національних GSM операторів – відповідно до тарифних планів
                 відповідних операторів. Організатор Акції - ТОВ «ЛЕОНКОМ».
               </p>
             </div>
@@ -407,7 +408,7 @@
       <div id="modal-reg" class="modal">
         <form
           class="modal-form reg-form"
-          action="/api/v1/users/codes"
+          action="http://koleso.atbmarket.com/api/v1/users/codes"
           method="post"
         >
           <button
@@ -438,8 +439,6 @@
             <input
               type="text"
               required=""
-              pattern="[А-Яа-яЁёіІїЇєЄҐґ'`’\s\-]{3,}"
-              title="Будь ласка, використовуйте літери українського алфавіту"
               name="name"
               placeholder="Вкажіть Ім’я*"
             />
@@ -471,7 +470,6 @@
             <input
               type="text"
               required=""
-              pattern="\w*"
               name="code"
               placeholder="Код, який потрібно зареєструвати*"
             />
@@ -511,7 +509,11 @@
     <!-- Modal Form -->
     <div id="overlay-auth" class="overlay">
       <div id="modal-auth" class="modal">
-        <form class="modal-form auth-form" action="/api/v1/login" method="post">
+        <form
+          class="modal-form auth-form"
+          action="http://koleso.atbmarket.com/api/v1/login"
+          method="post"
+        >
           <button
             class="close-btn close-auth-modal"
             type="button"
@@ -544,16 +546,17 @@
               class="phone"
               placeholder="Номер телефону"
             />
+            <div class="label-error"></div>
           </label>
 
           <label class="modal-form__label" for="#">
             <input
               type="text"
               required=""
-              pattern="\w*"
               name="code"
               placeholder="Один із кодів, який вже було зареєстровано"
             />
+            <div class="label-error"></div>
           </label>
 
           <div class="checkbox">
@@ -698,7 +701,7 @@
           },
           Фокстрот: {
             name: 'Фокстрот',
-            index: 4,
+            index: 2,
           },
           'Dnipro M': {
             name: 'Dnipro M',

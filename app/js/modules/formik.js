@@ -1,6 +1,22 @@
 import { convertInputsToData } from './converter';
 import { post_request } from './requests';
 
+function parseJwt(token) {
+  var base64Url = token.split('.')[1];
+  var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+  var jsonPayload = decodeURIComponent(
+    window
+      .atob(base64)
+      .split('')
+      .map(function (c) {
+        return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+      })
+      .join(''),
+  );
+
+  return JSON.parse(jsonPayload);
+}
+
 const wheelNone = () => {
   const wheel = document.querySelector('.wheel-overlay');
   const giftOverlay = document.querySelector('.overlay__gift');
@@ -20,23 +36,26 @@ const wheelNone = () => {
 };
 
 const clearInputs = (array, labelByForm) => {
+  const labels = [...labelByForm];
   for (let index = 0; index < array.length; index++) {
     const input = array[index];
     input.classList.remove('error');
-    labelByForm.textContent = '';
+    console.log(labels[index]);
+    if (labels[index] !== undefined) {
+      labels[index].textContent = '';
+    }
   }
 };
 
 const addError = (array, response, labelForm) => {
   for (let index = 0; index < array.length; index++) {
     const input = array[index];
-    const label = labelForm[index];
 
     const key = Object.keys(response.errors)[0];
 
     if (input.name === Object.keys(response.errors)[0]) {
       input.classList.add('error');
-      label[index] = response.errors[key];
+      labelForm[index].textContent = response.errors[key][0];
     }
   }
 };
@@ -92,12 +111,26 @@ const formik = (selector, submitButton) => {
                       wheel.classList.add('active');
                       overlay_reg.classList.remove('active');
                     } else {
+                      const accessToken = text.access_token;
+                      const expires_in = text.expires_in;
+                      localStorage.setItem('accessToken', accessToken);
+                      const decodedToken = parseJwt(accessToken);
+                      localStorage.setItem(
+                        'expires_in',
+                        JSON.stringify(decodedToken.exp),
+                      );
+                      localStorage.setItem(
+                        'id',
+                        JSON.stringify(decodedToken.sub),
+                      );
+
                       window.location.href = '/account.html';
                     }
                   });
                 } else {
                   responseObj.json.then((text) => {
-                    helpertext.textContent = text.message;
+                    if (!text.hasOwnProperty('errors'))
+                      helpertext.textContent = text.message;
                     addError(inputsByForm, text, labelByForm);
                   });
                 }
