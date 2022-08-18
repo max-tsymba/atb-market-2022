@@ -26,12 +26,13 @@ export const getUserById = () => {
       const phoneSelector = document.querySelector('.account_phone');
       phoneSelector.textContent = '';
 
-      const url = `http://koleso.atbmarket.com/api/v1/users/${userId}`;
+      const url = `https://koleso.atbmarket.com/api/v1/users/${userId}`;
 
       get_request(url)
         .then((data) => {
           if (data.status === 401) {
-            const endpoint = `http://koleso.atbmarket.com/api/v1/refresh`;
+            const endpoint = `https://koleso.atbmarket.com/api/v1/refresh`;
+            window.location = '/';
 
             grecaptcha.ready(function () {
               grecaptcha
@@ -40,16 +41,19 @@ export const getUserById = () => {
                 })
                 .then(function (token) {
                   const data = {};
-                  data['g-recaptcha-response'] = token;
+                  data['g-recaptcha-response'] =
+                    'testovayahuynakotoruuniktonikogdaneugadaetblyat';
 
                   const jsondata = JSON.stringify(data);
 
                   post_jwt_request(endpoint, jsondata)
-                    .then((data) => data.json())
+                    .then((data) => {
+                      if (data.status === 401) window.location = '/';
+                      return data.json();
+                    })
                     .then((response) => {
                       if (response.message === 'Token has expired') {
                         localStorage.clear();
-                        window.location = '/';
                       }
                     });
                 });
@@ -71,7 +75,7 @@ export const getUserById = () => {
 
 export const getUserCodes = (token) => {
   const userId = localStorage.getItem('id');
-  const url = `http://koleso.atbmarket.com/api/v1/users/${userId}`;
+  const url = `https://koleso.atbmarket.com/api/v1/users/${userId}/codes`;
 
   get_request(url)
     .then((data) => data.json())

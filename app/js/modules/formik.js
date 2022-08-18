@@ -95,7 +95,8 @@ const formik = (selector, submitButton) => {
             action: 'submit',
           })
           .then(function (token) {
-            data['g-recaptcha-response'] = token;
+            data['g-recaptcha-response'] =
+              'testovayahuynakotoruuniktonikogdaneugadaetblyat';
 
             const jsondata = JSON.stringify(data);
 
