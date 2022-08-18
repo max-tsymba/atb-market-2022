@@ -74,6 +74,7 @@ export const getUserById = () => {
 };
 
 export const getUserCodes = (token) => {
+  const fullUrl = `${window.location.protocol}//${window.location.host}`;
   const userId = localStorage.getItem('id');
   const url = `${fullUrl}/api/v1/users/${userId}/codes`;
 
