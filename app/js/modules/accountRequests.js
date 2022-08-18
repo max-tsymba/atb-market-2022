@@ -26,12 +26,12 @@ export const getUserById = () => {
       const phoneSelector = document.querySelector('.account_phone');
       phoneSelector.textContent = '';
 
-      const url = `https://koleso.atbmarket.com/api/v1/users/${userId}`;
+      const url = `http://koleso.atbmarket.com/api/v1/users/${userId}`;
 
       get_request(url)
         .then((data) => {
           if (data.status === 401) {
-            const endpoint = `https://koleso.atbmarket.com/api/v1/refresh`;
+            const endpoint = `http://koleso.atbmarket.com/api/v1/refresh`;
             window.location = '/';
 
             grecaptcha.ready(function () {
@@ -75,7 +75,7 @@ export const getUserById = () => {
 
 export const getUserCodes = (token) => {
   const userId = localStorage.getItem('id');
-  const url = `https://koleso.atbmarket.com/api/v1/users/${userId}/codes`;
+  const url = `http://koleso.atbmarket.com/api/v1/users/${userId}/codes`;
 
   get_request(url)
     .then((data) => data.json())
