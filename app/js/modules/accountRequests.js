@@ -109,3 +109,18 @@ function addElementsToDocument(response) {
     addLi(i);
   }
 }
+
+export const goToAccount = () => {
+  const linkSelector = document.querySelector('.auth-open');
+
+  if (
+    linkSelector !== undefined &&
+    localStorage.getItem('accessToken') &&
+    localStorage.getItem('id')
+  ) {
+    linkSelector.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.location = '/account.html';
+    });
+  }
+};

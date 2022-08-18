@@ -1,5 +1,10 @@
 /*====================================IMPORT MODULES====================================*/
-import { checkAuth, getUserById, logout } from './modules/accountRequests';
+import {
+  checkAuth,
+  getUserById,
+  goToAccount,
+  logout,
+} from './modules/accountRequests';
 import formik from './modules/formik';
 import createInputMask from './modules/inputMask';
 import { burgerOpener, modalOpener } from './modules/libs';
@@ -14,6 +19,7 @@ const globalListener = () => {
   formik('.reg-form', '.sign-btn');
   logout('.logout');
   getUserById();
+  goToAccount();
 };
 
 window.addEventListener('DOMContentLoaded', globalListener);
