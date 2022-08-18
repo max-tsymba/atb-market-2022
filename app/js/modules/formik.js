@@ -40,7 +40,6 @@ const clearInputs = (array, labelByForm) => {
   for (let index = 0; index < array.length; index++) {
     const input = array[index];
     input.classList.remove('error');
-    console.log(labels[index]);
     if (labels[index] !== undefined) {
       labels[index].textContent = '';
     }
@@ -95,8 +94,7 @@ const formik = (selector, submitButton) => {
             action: 'submit',
           })
           .then(function (token) {
-            data['g-recaptcha-response'] =
-              'testovayahuynakotoruuniktonikogdaneugadaetblyat';
+            data['g-recaptcha-response'] = token;
 
             const jsondata = JSON.stringify(data);
 

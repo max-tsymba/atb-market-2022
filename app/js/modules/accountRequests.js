@@ -5,7 +5,6 @@ export const logout = (selector) => {
 
   if (logoutButtonSelector !== undefined) {
     logoutButtonSelector.addEventListener('click', () => {
-      console.log('click');
       localStorage.clear();
       logoutButtonSelector.disabled = true;
       window.location = '/';
@@ -18,6 +17,8 @@ export const logout = (selector) => {
 export const getUserById = () => {
   const pathname = window.location.pathname;
 
+  const fullUrl = `${window.location.protocol}//${window.location.host}`;
+
   if (pathname === '/account.html') {
     const token = localStorage.getItem('accessToken');
 
@@ -26,12 +27,12 @@ export const getUserById = () => {
       const phoneSelector = document.querySelector('.account_phone');
       phoneSelector.textContent = '';
 
-      const url = `http://koleso.atbmarket.com/api/v1/users/${userId}`;
+      const url = `${fullUrl}/api/v1/users/${userId}`;
 
       get_request(url)
         .then((data) => {
           if (data.status === 401) {
-            const endpoint = `http://koleso.atbmarket.com/api/v1/refresh`;
+            const endpoint = `${fullUrl}/api/v1/refresh`;
             window.location = '/';
 
             grecaptcha.ready(function () {
@@ -41,8 +42,7 @@ export const getUserById = () => {
                 })
                 .then(function (token) {
                   const data = {};
-                  data['g-recaptcha-response'] =
-                    'testovayahuynakotoruuniktonikogdaneugadaetblyat';
+                  data['g-recaptcha-response'] = token;
 
                   const jsondata = JSON.stringify(data);
 
@@ -75,7 +75,7 @@ export const getUserById = () => {
 
 export const getUserCodes = (token) => {
   const userId = localStorage.getItem('id');
-  const url = `http://koleso.atbmarket.com/api/v1/users/${userId}/codes`;
+  const url = `${fullUrl}/api/v1/users/${userId}/codes`;
 
   get_request(url)
     .then((data) => data.json())
