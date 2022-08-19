@@ -34,6 +34,9 @@ export const getUserById = () => {
           if (data.status === 401) {
             const endpoint = `${fullUrl}/api/v1/refresh`;
             window.location = '/';
+            localStorage.clear();
+
+            console.log('send');
 
             grecaptcha.ready(function () {
               grecaptcha
