@@ -112,6 +112,10 @@ function buildPackageHtml() {
     .pipe(dest('dist/groups'));
 }
 
+function buildPDFs() {
+  return src(['app/winners/**/*.pdf']).pipe(dest('dist/winners'));
+}
+
 function build() {
   return src(
     [
@@ -122,6 +126,9 @@ function build() {
       'app/js/jquery.maskedinput.min.js',
       'app/js/aos.min.js',
       'app/js/Winwheel.min.js',
+      'app/js/TweenMax.min.js',
+      'app/favicon.ico',
+      'app/Official_Rules.pdf',
     ],
     {
       base: 'app',
@@ -143,6 +150,14 @@ exports.buildhtml = buildHtml;
 exports.cleandist = cleanDist;
 exports.buildjs = buildJs;
 exports.htmlpackage = buildPackageHtml;
+exports.buildpdf = buildPDFs;
 
-exports.build = series(cleanDist, images, build, buildHtml, buildPackageHtml);
+exports.build = series(
+  cleanDist,
+  images,
+  build,
+  buildHtml,
+  buildPackageHtml,
+  buildPDFs,
+);
 exports.default = parallel(styles, buildJs, browsersync, watching);
