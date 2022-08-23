@@ -3,7 +3,7 @@ import { get_request, post_jwt_request, post_request } from './requests';
 export const logout = (selector) => {
   const logoutButtonSelector = document.querySelector(selector);
 
-  if (logoutButtonSelector !== undefined) {
+  if (logoutButtonSelector !== undefined && logoutButtonSelector !== null) {
     logoutButtonSelector.addEventListener('click', () => {
       localStorage.clear();
       logoutButtonSelector.disabled = true;

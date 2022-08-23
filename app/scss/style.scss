@@ -135,3 +135,31 @@ body[data-aos-duration='400'] [data-aos] {
 .account .tablet__item p {
   min-width: 180px;
 }
+
+.winners {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px 0;
+  margin-top: 150px;
+
+  @media (max-width: 768px) {
+    gap: 10px 0;
+  }
+}
+
+.winners a {
+  display: inline-block;
+  font-size: 20px;
+
+  @media (max-width: 768px) {
+    font-size: 18px;
+  }
+}
+
+a.disabled {
+  pointer-events: none;
+  cursor: default;
+}

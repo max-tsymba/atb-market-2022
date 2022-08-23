@@ -68,10 +68,10 @@ const formik = (selector, submitButton) => {
   wheelNone();
   window.responseText = 'none';
 
-  const isFormFinite = formSelector !== undefined;
+  const isFormFinite = formSelector !== undefined && formSelector !== null;
 
   if (isFormFinite) {
-    const endpoint = formSelector.action,
+    const endpoint = formSelector?.action,
       inputsByForm = formSelector.getElementsByTagName('input'),
       loader = formSelector.getElementsByClassName('loader')[0],
       labelByForm = formSelector.getElementsByClassName('label-error'),
